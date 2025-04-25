@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Tuo Sito di Gaming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Il Tuo Logo Gaming</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="recensioni.html">Recensioni</a></li>
+                <li><a href="#">Guide</a></li>
+                <li><a href="#">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Immergiti nel Mondo del Gaming</h1>
+                <p>Le ultime recensioni, notizie e guide sui tuoi giochi preferiti.</p>
+                <a href="#" class="button">Scopri di più</a>
+            </div>
+        </section>
+
+        <section class="featured-reviews">
+            <h2>Ultime Recensioni</h2>
+            <div class="review-grid" id="latest-reviews">
+                </div>
+            <a href="recensioni.html" class="button">Vedi tutte le recensioni</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Il Tuo Sito di Gaming. Tutti i diritti riservati.</p>
+        <div class="social-links">
+            <a href="#"><img src="placeholder-social-icon.png" alt="Facebook"></a>
+            <a href="#"><img src="placeholder-social-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="placeholder-social-icon.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script src="reviews.js"></script>
+    <script>
+        // Funzione per convertire una data in formato ISO 8601 in un oggetto Date
+        function parseDate(dateString) {
+            const [year, month, day] = dateString.split('-').map(Number);
+            return new Date(year, month - 1, day); // Mese è 0-based in JavaScript
+        }
+
+        // Ordina le recensioni per data in ordine decrescente (le più recenti prima)
+        reviews.sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
+        // Seleziona il contenitore delle recensioni
+        const latestReviewsContainer = document.getElementById('latest-reviews');
+
+        // Prendi le prime tre recensioni
+        const latestThreeReviews = reviews.slice(0, 3);
+
+        // Genera l'HTML per le ultime tre recensioni
+        latestThreeReviews.forEach(review => {
+            const reviewCard = document.createElement('div');
+            reviewCard.classList.add('review-card');
+
+            const image = document.createElement('img');
+            image.src = review.backgroundImage; // Usa il percorso dell'immagine dalla recensione
+            image.alt = review.title;
+
+            const title = document.createElement('h3');
+            title.textContent = review.title;
+
+            const excerpt = document.createElement('p');
+            excerpt.textContent = review.excerpt;
+
+            const link = document.createElement('a');
+            link.href = review.link; // Usa il percorso del link dalla recensione
+            link.textContent = 'Leggi la recensione';
+
+            reviewCard.appendChild(image);
+            reviewCard.appendChild(title);
+            reviewCard.appendChild(excerpt);
+            reviewCard.appendChild(link);
+
+            latestReviewsContainer.appendChild(reviewCard);
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

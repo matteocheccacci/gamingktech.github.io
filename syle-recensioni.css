@@ -1,0 +1,85 @@
+.review-list-section {
+    padding: 40px 20px;
+    background-color: #181818; /* Mantiene lo sfondo scuro */
+}
+
+.review-list-section h1 {
+    color: #dc3545;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Card più larghe */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.review-card-enhanced {
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 250px; /* Altezza minima maggiore */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Ombreggiatura */
+    transition: transform 0.3s ease-in-out; /* Effetto al passaggio del mouse */
+}
+
+.review-card-enhanced:hover {
+    transform: scale(1.03); /* Leggero zoom al hover */
+}
+
+.review-overlay-enhanced {
+    background-color: rgba(0, 0, 0, 0.75); /* Overlay più scuro e leggermente trasparente */
+    color: #fff;
+    padding: 25px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0; /* Inizia dal basso e appare */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, bottom 0.3s ease-in-out;
+}
+
+.review-card-enhanced:hover .review-overlay-enhanced {
+    opacity: 1;
+    bottom: 0;
+}
+
+.review-overlay-enhanced h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.review-date {
+    display: block;
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.review-overlay-enhanced p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.review-overlay-enhanced .button {
+    display: inline-block;
+    background-color: #dc3545; /* Bottone rosso */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.review-overlay-enhanced .button:hover {
+    background-color: #c82333;
+}

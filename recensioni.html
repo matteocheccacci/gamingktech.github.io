@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recensioni - Il Tuo Sito di Gaming</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-recensioni.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Il Tuo Logo Gaming</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recensioni.html">Recensioni</a></li>
+                <li><a href="#">Guide</a></li>
+                <li><a href="#">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="review-list-section">
+            <h1>Tutte le Recensioni</h1>
+            <div class="review-grid" id="all-reviews">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Il Tuo Sito di Gaming. Tutti i diritti riservati.</p>
+        <div class="social-links">
+            <a href="#"><img src="placeholder-social-icon.png" alt="Facebook"></a>
+            <a href="#"><img src="placeholder-social-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="placeholder-social-icon.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script src="reviews.js"></script>
+    <script>
+        const allReviewsContainer = document.getElementById('all-reviews');
+
+        reviews.forEach(review => {
+            const reviewCard = document.createElement('div');
+            reviewCard.classList.add('review-card-enhanced');
+            reviewCard.style.backgroundImage = `url('${review.backgroundImage}')`;
+
+            const overlay = document.createElement('div');
+            overlay.classList.add('review-overlay-enhanced');
+
+            const title = document.createElement('h2');
+            title.textContent = review.title;
+
+            const date = document.createElement('span');
+            date.classList.add('review-date');
+            const formattedDate = new Date(review.date).toLocaleDateString('it-IT', { year: 'numeric', month: 'long', day: 'numeric' });
+            date.textContent = `Data: ${formattedDate}`;
+
+            const excerpt = document.createElement('p');
+            excerpt.textContent = review.excerpt;
+
+            const link = document.createElement('a');
+            link.href = review.link;
+            link.textContent = 'Leggi la recensione completa';
+            link.classList.add('button');
+
+            overlay.appendChild(title);
+            overlay.appendChild(date);
+            overlay.appendChild(excerpt);
+            overlay.appendChild(link);
+            reviewCard.appendChild(overlay);
+
+            allReviewsContainer.appendChild(reviewCard);
+        });
+    </script>
+</body>
+</html>
